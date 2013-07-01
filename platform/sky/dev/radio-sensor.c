@@ -34,6 +34,8 @@
 #include "dev/cc2420.h"
 #include "dev/radio-sensor.h"
 
+#if USE_SENSORS
+
 const struct sensors_sensor radio_sensor;
 static int active;
 
@@ -73,3 +75,5 @@ status(int type)
 /*---------------------------------------------------------------------------*/
 SENSORS_SENSOR(radio_sensor, RADIO_SENSOR,
 	       value, configure, status);
+
+#endif

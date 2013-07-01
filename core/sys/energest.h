@@ -67,13 +67,6 @@ enum energest_type {
   ENERGEST_TYPE_MAX
 };
 
-void energest_init(void);
-unsigned long energest_type_time(int type);
-#ifdef ENERGEST_CONF_LEVELDEVICE_LEVELS
-unsigned long energest_leveldevice_leveltime(int powerlevel);
-#endif
-void energest_type_set(int type, unsigned long value);
-void energest_flush(void);
 
 #if ENERGEST_CONF_ON
 /*extern int energest_total_count;*/
@@ -126,4 +119,23 @@ extern energest_t energest_leveldevice_current_leveltime[ENERGEST_CONF_LEVELDEVI
 #define ENERGEST_OFF_LEVEL(type,level) do { } while(0)
 #endif /* ENERGEST_CONF_ON */
 
+
+#if ENERGEST_CONF_ON
+void energest_init(void);
+unsigned long energest_type_time(int type);
+#ifdef ENERGEST_CONF_LEVELDEVICE_LEVELS
+unsigned long energest_leveldevice_leveltime(int powerlevel);
+#endif
+void energest_type_set(int type, unsigned long value);
+void energest_flush(void);
+
+#else /* ENERGEST_CONF_ON */
+static inline void energest_type_set(int type, unsigned long val) {}
+static inline void energest_init(void) {}
+static inline unsigned long energest_type_time(int type) { return 0; }
+static inline void energest_flush(void) {}
+#endif /* ENERGEST_CONF_ON */
+
+
 #endif /* __ENERGEST_H__ */
+

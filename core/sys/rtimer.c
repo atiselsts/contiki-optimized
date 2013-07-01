@@ -47,6 +47,8 @@
 #include "sys/rtimer.h"
 #include "contiki.h"
 
+#if USE_RTIMER
+
 #define DEBUG 0
 #if DEBUG
 #include <stdio.h>
@@ -105,3 +107,5 @@ rtimer_run_next(void)
   return;
 }
 /*---------------------------------------------------------------------------*/
+
+#endif

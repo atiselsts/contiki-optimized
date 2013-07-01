@@ -46,6 +46,8 @@
 
 #include "dev/i2c.h"
 
+#if USE_SENSORS
+
 /*
  * On the Tmote sky access to I2C/SPI/UART0 must always be exclusive.
  */
@@ -223,3 +225,5 @@ i2c_read(int send_ack)
 
   return c;
 }
+
+#endif

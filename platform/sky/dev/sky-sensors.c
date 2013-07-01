@@ -39,6 +39,8 @@
 #include "contiki.h"
 #include "lib/sensors.h"
 
+#if USE_SENSORS
+
 #define ADC12MCTL_NO(adcno) ((unsigned char *) ADC12MCTL0_)[adcno]
 
 static uint16_t adc_on;
@@ -150,3 +152,5 @@ sky_sensors_configure(uint16_t input, uint8_t ref, int type, int value)
   return 0;
 }
 /*---------------------------------------------------------------------------*/
+
+#endif

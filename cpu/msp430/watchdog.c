@@ -30,6 +30,8 @@
  *
  */
 
+#if USE_WATCHDOG
+
 #include "contiki.h"
 #include "dev/watchdog.h"
 #include "isr_compat.h"
@@ -151,3 +153,6 @@ watchdog_reboot(void)
   WDTCTL = 0;
 }
 /*---------------------------------------------------------------------------*/
+
+
+#endif

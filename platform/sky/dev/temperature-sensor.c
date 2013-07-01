@@ -37,6 +37,8 @@
  *         Niclas Finne <nfi@sics.se>
  */
 
+#if USE_SENSORS
+
 #include "contiki.h"
 #include "dev/temperature-sensor.h"
 #include "dev/sky-sensors.h"
@@ -68,3 +70,5 @@ status(int type)
 /*---------------------------------------------------------------------------*/
 SENSORS_SENSOR(temperature_sensor, TEMPERATURE_SENSOR,
                value, configure, status);
+
+#endif

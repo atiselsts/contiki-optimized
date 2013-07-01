@@ -34,10 +34,14 @@
 
 #include "dev/button-sensor.h"
 
+#if USE_USER_BUTTON
 SENSORS(&button_sensor);
+#endif
 
 void
 init_platform(void)
 {
+#if USE_USER_BUTTON
   process_start(&sensors_process, NULL);
+#endif
 }

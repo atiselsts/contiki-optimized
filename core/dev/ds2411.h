@@ -34,7 +34,11 @@
 #ifndef DS2411_H
 #define DS2411_H
 
+#if USE_ADDRESSING
+
 extern unsigned char ds2411_id[8];
 extern int ds2411_init();
+
+#endif
 
 #endif /* DS2411_H */

@@ -46,6 +46,8 @@
 #include "contiki.h"
 #include "lib/list.h"
 
+#if USE_ALARMS
+
 LIST(ctimer_list);
 
 static char initialized;
@@ -169,3 +171,5 @@ ctimer_expired(struct ctimer *c)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
+
+#endif

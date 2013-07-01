@@ -30,6 +30,8 @@
  *
  */
 
+#if USE_SENSORS
+
 #include "contiki.h"
 #include "lib/sensors.h"
 #include "dev/sky-sensors.h"
@@ -73,3 +75,5 @@ configure(int type, int c)
 }
 /*---------------------------------------------------------------------------*/
 SENSORS_SENSOR(light_sensor, "Light", value, configure, status);
+
+#endif

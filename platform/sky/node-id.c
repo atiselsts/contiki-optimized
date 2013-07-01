@@ -47,6 +47,7 @@ unsigned short node_id = 0;
 void
 node_id_restore(void)
 {
+#if USE_XMEM
   unsigned char buf[4];
   xmem_pread(buf, 4, NODE_ID_XMEM_OFFSET);
   if(buf[0] == 0xad &&
@@ -55,11 +56,13 @@ node_id_restore(void)
   } else {
     node_id = 0;
   }
+#endif
 }
 /*---------------------------------------------------------------------------*/
 void
 node_id_burn(unsigned short id)
 {
+#if USE_XMEM
   unsigned char buf[4];
   buf[0] = 0xad;
   buf[1] = 0xde;
@@ -67,5 +70,6 @@ node_id_burn(unsigned short id)
   buf[3] = id & 0xff;
   xmem_erase(XMEM_ERASE_UNIT_SIZE, NODE_ID_XMEM_OFFSET);
   xmem_pwrite(buf, 4, NODE_ID_XMEM_OFFSET);
+#endif
 }
 /*---------------------------------------------------------------------------*/

@@ -33,6 +33,8 @@
  * This code is almost device independent and should be easy to port.
  */
 
+#if USE_RADIO
+
 #include <string.h>
 
 #include "contiki.h"
@@ -884,3 +886,7 @@ cc2420_set_cca_threshold(int value)
   RELEASE_LOCK();
 }
 /*---------------------------------------------------------------------------*/
+
+
+
+#endif

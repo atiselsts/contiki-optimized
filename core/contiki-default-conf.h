@@ -234,5 +234,10 @@
 #define CONTIKIMAC_CONF_WITH_PHASE_OPTIMIZATION 0
 #endif /* CONTIKIMAC_CONF_WITH_PHASE_OPTIMIZATION */
 
+#if USE_PRINT
+#define PRINTF(...) printf(__VA_ARGS__)
+#else
+#define PRINTF(...) // nothing
+#endif
 
 #endif /* CONTIKI_DEFAULT_CONF_H */

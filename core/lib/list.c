@@ -46,6 +46,8 @@
  */
 #include "lib/list.h"
 
+#if USE_ALARMS
+
 #define NULL 0
 
 struct list {
@@ -327,3 +329,6 @@ list_item_next(void *item)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
+
+
+#endif

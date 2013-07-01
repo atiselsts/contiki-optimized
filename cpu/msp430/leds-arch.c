@@ -38,6 +38,7 @@
 #include "contiki.h"
 #include "dev/leds.h"
 
+#if USE_LEDS
 /*---------------------------------------------------------------------------*/
 void
 leds_arch_init(void)
@@ -65,3 +66,5 @@ leds_arch_set(unsigned char leds)
     | ((leds & LEDS_YELLOW) ? 0 : LEDS_CONF_YELLOW);
 }
 /*---------------------------------------------------------------------------*/
+
+#endif

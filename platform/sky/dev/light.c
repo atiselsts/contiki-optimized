@@ -30,6 +30,8 @@
  *
  */
 
+#if USE_SENSORS
+
 #include <stdlib.h>
 #include "contiki.h"
 #include "dev/light.h"
@@ -123,4 +125,8 @@ sensors_light2_lux(void)
   temp = (temp*625)>> 10; 
   return (uint16_t)(temp & 0xFFFF); 
 }
+#endif
+
+
+
 #endif

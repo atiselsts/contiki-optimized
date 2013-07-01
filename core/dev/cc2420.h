@@ -41,6 +41,8 @@
 #ifndef __CC2420_H__
 #define __CC2420_H__
 
+#if USE_RADIO
+
 #include "contiki.h"
 #include "dev/spi.h"
 #include "dev/radio.h"
@@ -201,3 +203,5 @@ void cc2420_set_cca_threshold(int value);
   } while (0)
 
 #endif /* __CC2420_H__ */
+
+#endif

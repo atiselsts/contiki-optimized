@@ -47,6 +47,8 @@
  * assigned by the organization with that OUI assignment.
  */
 
+#if USE_ADDRESSING
+
 #include <string.h>
 
 #include "contiki.h"
@@ -232,3 +234,5 @@ ds2411_init()
   return 0;			/* Fail! */
 }
 /*---------------------------------------------------------------------------*/
+
+#endif

@@ -35,6 +35,9 @@
  *           $Revision: 1.11 $
  */
 
+#if USE_SENSORS
+
+
 #include "contiki.h"
 #include "dev/battery-sensor.h"
 #include "dev/sky-sensors.h"
@@ -66,3 +69,5 @@ status(int type)
 }
 /*---------------------------------------------------------------------------*/
 SENSORS_SENSOR(battery_sensor, BATTERY_SENSOR, value, configure, status);
+
+#endif

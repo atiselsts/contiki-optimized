@@ -30,6 +30,7 @@
  *
  */
 
+#if USE_RANDOM
 
 #include "lib/random.h"
 #include "sys/clock.h"
@@ -52,3 +53,5 @@ random_rand(void)
   return (unsigned short)rand();
 }
 /*---------------------------------------------------------------------------*/
+
+#endif

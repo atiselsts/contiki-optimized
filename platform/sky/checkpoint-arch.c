@@ -37,6 +37,7 @@
  * \author
  *  Fredrik Osterlind <fros@sics.se>
  */
+#if USE_CHECKPOINT
 
 #include "contiki.h"
 
@@ -690,3 +691,5 @@ PROCESS_THREAD(checkpoint_button_process, ev, data)
   PROCESS_END();
 }
 #endif /* CHECKPOINT_ROLLBACK_BUTTON */
+
+#endif

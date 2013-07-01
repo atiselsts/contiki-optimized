@@ -38,6 +38,7 @@
  *         unwritten data will read as zeros (UNIX style).
  */
 
+#if USE_XMEM
 
 #include "contiki.h"
 #include <stdio.h>
@@ -269,3 +270,5 @@ xmem_erase(long size, unsigned long addr)
   return size;
 }
 /*---------------------------------------------------------------------------*/
+
+#endif // USE_XMEM

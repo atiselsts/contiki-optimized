@@ -1,3 +1,4 @@
+#if USE_SERIAL
 #include <stdio.h>
 #include "dev/uart1.h"
 
@@ -7,3 +8,5 @@ putchar(int c)
   uart1_writeb((char)c);
   return c;
 }
+
+#endif

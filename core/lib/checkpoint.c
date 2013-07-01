@@ -39,6 +39,8 @@
 
 #include "lib/checkpoint.h"
 
+#if USE_CHECKPOINT
+
 /*---------------------------------------------------------------------------*/
 void
 checkpoint_init(void)
@@ -57,3 +59,5 @@ checkpoint_rollback(int fd)
 {
   checkpoint_arch_rollback(fd);
 }
+
+#endif

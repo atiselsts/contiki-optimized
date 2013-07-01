@@ -35,6 +35,8 @@
 #include "dev/button-sensor.h"
 #include "isr_compat.h"
 
+#if USE_SENSORS
+
 const struct sensors_sensor button_sensor;
 
 static struct timer debouncetimer;
@@ -101,3 +103,5 @@ status(int type)
 /*---------------------------------------------------------------------------*/
 SENSORS_SENSOR(button_sensor, BUTTON_SENSOR,
 	       value, configure, status);
+
+#endif

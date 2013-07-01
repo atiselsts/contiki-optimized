@@ -32,6 +32,8 @@
  * Machine dependent MSP430 UART1 code.
  */
 
+#if USE_SERIAL
+
 #include "contiki.h"
 #include "sys/energest.h"
 #include "dev/uart1.h"
@@ -281,3 +283,6 @@ ISR(UART1TX, uart1_tx_interrupt)
 }
 #endif /* TX_WITH_INTERRUPT */
 /*---------------------------------------------------------------------------*/
+
+#endif
+

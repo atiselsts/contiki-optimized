@@ -49,6 +49,8 @@
 #include "sys/etimer.h"
 #include "sys/process.h"
 
+//#if USE_ETIMER
+
 static struct etimer *timerlist;
 static clock_time_t next_expiration;
 
@@ -262,3 +264,5 @@ etimer_stop(struct etimer *et)
 }
 /*---------------------------------------------------------------------------*/
 /** @} */
+
+//#endif USE_ETIMER

@@ -32,11 +32,21 @@
 #ifndef __WATCHDOG_H__
 #define __WATCHDOG_H__
 
+#if USE_WATCHDOG
 void watchdog_init(void);
 void watchdog_start(void);
 void watchdog_periodic(void);
 void watchdog_stop(void);
 
 void watchdog_reboot(void);
+
+#else
+static inline void watchdog_init(void) {}
+static inline void watchdog_start(void) {}
+static inline void watchdog_periodic(void) {}
+static inline void watchdog_stop(void) {}
+
+static inline void watchdog_reboot(void) {}
+#endif
 
 #endif /* __WATCHDOG_H__ */

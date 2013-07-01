@@ -54,7 +54,9 @@ UPPERCASE = _ABCDEFGHIJKLMNOPQRSTUVWXYZ
 TARGET_UPPERCASE := ${strip ${shell echo $(TARGET) | sed y!$(LOWERCASE)!$(UPPERCASE)!}}
 CFLAGS += -DCONTIKI=1 -DCONTIKI_TARGET_$(TARGET_UPPERCASE)=1
 
+ifeq ($(USE_RIME),y)
 include $(CONTIKI)/core/net/rime/Makefile.rime
+endif
 include $(CONTIKI)/core/net/mac/Makefile.mac
 SYSTEM  = process.c procinit.c autostart.c elfloader.c profile.c \
           timetable.c timetable-aggregate.c compower.c serial-line.c
@@ -63,16 +65,34 @@ LIBS    = memb.c mmem.c timer.c list.c etimer.c ctimer.c energest.c rtimer.c sti
           print-stats.c ifft.c crc16.c random.c checkpoint.c ringbuf.c settings.c
 DEV     = nullradio.c
 
+ifeq ($(USE_UIP),y)
 include $(CONTIKI)/core/net/Makefile.uip
 include $(CONTIKI)/core/net/rpl/Makefile.rpl
+else
+ifeq ($(USE_RIME),y)
+# enable some things that rime needs
+NET= \
+netstack.c					\
+packetbuf.c					\
+packetqueue.c					\
+psock.c						\
+queuebuf.c					
+endif
+endif
 
+ifeq ($(USE_CTK),y)
 CTK     = ctk.c
 CTKVNC  = $(CTK) ctk-vncserver.c libconio.c vnc-server.c vnc-out.c ctk-vncfont.c
+endif
 
+ifndef CONTIKI_MY_OPTIMIZATIONS
 ifndef CONTIKI_NO_NET
   CONTIKIFILES = $(SYSTEM) $(LIBS) $(NET) $(THREADS) $(DHCP) $(DEV)
 else
   CONTIKIFILES = $(SYSTEM) $(LIBS) $(THREADS) $(DEV) sicslowpan.c fakeuip.c
+endif
+else
+  CONTIKIFILES = $(SYSTEM) $(LIBS) $(THREADS) $(DEV) myextras.c
 endif
 
 CONTIKI_SOURCEFILES += $(CONTIKIFILES)

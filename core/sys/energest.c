@@ -113,9 +113,9 @@ energest_flush(void)
   }
 }
 /*---------------------------------------------------------------------------*/
-#else /* ENERGEST_CONF_ON */
-void energest_type_set(int type, unsigned long val) {}
-void energest_init(void) {}
-unsigned long energest_type_time(int type) { return 0; }
-void energest_flush(void) {}
+/* #else /\* ENERGEST_CONF_ON *\/ */
+/* void energest_type_set(int type, unsigned long val) {} */
+/* void energest_init(void) {} */
+/* unsigned long energest_type_time(int type) { return 0; } */
+/* void energest_flush(void) {} */
 #endif /* ENERGEST_CONF_ON */

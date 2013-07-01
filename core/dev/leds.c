@@ -34,6 +34,7 @@
 #include "sys/clock.h"
 #include "sys/energest.h"
 
+#if USE_LEDS
 static unsigned char leds, invert;
 /*---------------------------------------------------------------------------*/
 static void
@@ -120,3 +121,5 @@ leds_invert(unsigned char ledv) {
   show_leds(ledv);
 }
 /*---------------------------------------------------------------------------*/
+
+#endif

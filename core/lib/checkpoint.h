@@ -42,6 +42,7 @@
 
 #include "contiki.h"
 
+#if USE_CHECKPOINT
 void checkpoint_init(void);
 
 void checkpoint_checkpoint(int fd);
@@ -56,4 +57,21 @@ void checkpoint_arch_rollback(int fd);
 
 int checkpoint_arch_size();
 
+#else
+
+static inline void checkpoint_init(void) {}
+
+static inline void checkpoint_checkpoint(int fd) {}
+
+static inline void checkpoint_rollback(int fd) {}
+
+static inline void checkpoint_arch_init(void) {}
+
+static inline void checkpoint_arch_checkpoint(int fd) {}
+
+static inline void checkpoint_arch_rollback(int fd) {}
+
+static inline int checkpoint_arch_size() {}
+
+#endif
 #endif /* CHECKPOINT_H */

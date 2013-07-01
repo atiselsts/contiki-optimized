@@ -37,6 +37,8 @@
  *         Adam Dunkels <adam@sics.se>
  */
 
+#if USE_RADIO
+
 #include "contiki.h"
 #include "dev/cc2420.h"
 #include "dev/cc2420-aes.h"
@@ -116,3 +118,5 @@ cc2420_aes_cipher(uint8_t *data, int len, int key_index)
   }
 }
 /*---------------------------------------------------------------------------*/
+
+#endif
